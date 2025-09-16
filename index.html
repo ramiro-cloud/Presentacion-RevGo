@@ -68,7 +68,7 @@
             100% { background-position: 1200px 1200px; }
         }
         .glass-card {
-            background: rgba(20, 25, 40, 0.5);
+            background: rgba(20, 25, 40, 0.6);
             border-radius: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -76,7 +76,7 @@
             padding: 1rem;
             md:padding: 2rem;
             height: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             position: relative;
             z-index: 2;
             overflow: hidden;
@@ -339,34 +339,46 @@
             100% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
         }
         
-        /* --- NUEVOS ESTILOS --- */
+        /* --- ESTILOS CARRUSEL FINAL --- */
 
-        /* Estilos del carrusel (Ecosistema) */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px; /* Ancho del carrusel */
-            height: 200px; /* Alto del carrusel */
-            margin: auto;
+        #ecosystem-carousel {
+            perspective: 1200px;
+            transform-style: preserve-3d;
+            height: 220px;
         }
         .carousel-slide {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            transform: translateX(30px) scale(0.95);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            pointer-events: none;
             display: flex;
             justify-content: center;
             align-items: center;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
+            opacity: 0;
+            z-index: 1;
         }
         .carousel-slide.active {
-            opacity: 1;
             transform: translateX(0) scale(1);
+            opacity: 1;
+            z-index: 3;
             pointer-events: auto;
+        }
+        .carousel-slide.active .glass-card {
+            background: #141928;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .carousel-slide.prev {
+            transform: translateX(-55%) scale(0.85);
+            opacity: 0.5;
+            z-index: 2;
+        }
+        .carousel-slide.next {
+            transform: translateX(55%) scale(0.85);
+            opacity: 0.5;
+            z-index: 2;
         }
         .carousel-nav-btn {
             position: absolute;
@@ -389,9 +401,9 @@
             border-color: #38bdf8;
             transform: translateY(-50%) scale(1.1);
         }
-        #eco-prev { left: -50px; }
-        #eco-next { right: -50px; }
-
+        #eco-prev { left: -60px; }
+        #eco-next { right: -60px; }
+        
         /* Estilos tarjeta 3D (Competencia y Ecosistema) */
         .interactive-3d-card {
             transition: transform 0.1s linear;
@@ -495,7 +507,7 @@
             <div class="bg-grid"></div>
             <div class="slide-content text-center">
                 <div class="mb-8 w-48 h-48 md:w-64 md:h-64 mx-auto flex items-center justify-center fade-in-up">
-                        <img src="https://i.imgur.com/G5nL5wO.png" alt="Logo RevGo" class="max-w-full max-h-full">
+                        <img src="./Logo RevGo.png" alt="Logo RevGo" class="max-w-full max-h-full">
                 </div>
                 <h2 class="text-3xl md:text-5xl font-bold mt-8 leading-tight fade-in-up-delay-1">Agiliza tus finanzas: <span class="gradient-text">automatiza tus cobranzas</span>, la nueva era digital.</h2>
                 <button id="start-btn" class="glow-on-hover mt-16 fade-in-up-delay-2">Comenzar Presentación</button>
@@ -592,14 +604,13 @@
             </div>
         </div>
         
-        <!-- CAMBIO: Slide 5 con jerarquía de texto -->
         <div id="slide-5" class="slide">
             <div class="bg-grid"></div>
             <div class="slide-content">
                 <h2 class="text-4xl md:text-5xl font-bold mb-8 fade-in-up">¿Qué es <span class="gradient-text">RevGo?</span></h2>
                 <div class="grid md:grid-cols-2 gap-10 items-center">
                     <div class="fade-in-up-delay-1">
-                        <img src="https://i.imgur.com/QJ1J5m7.jpeg" alt="Dashboard de RevGo" class="rounded-lg shadow-2xl">
+                        <img src="./image 104.jpg" alt="Dashboard de RevGo" class="rounded-lg shadow-2xl">
                     </div>
                     <div class="text-left space-y-4">
                         <p class="text-gray-300 text-lg fade-in-up-delay-2">RevGo es una herramienta poderosa que integra una <strong class="text-white">billetera digital y un ERP financiero en una sola plataforma,</strong> simplificando la gestión de tu negocio. <br><br> Somos <span class="gradient-text font-semibold">los primeros en ofrecer esta combinación,</span> automatizando tareas clave y brindándote una visión clara de tus finanzas.</p>
@@ -700,35 +711,34 @@
             </div>
         </div>
         
-        <!-- CAMBIO: Slide 8 con Carrusel y tarjetas 3D -->
         <div id="slide-8" class="slide overflow-hidden">
             <div class="radial-glow-background"></div>
             <div class="slide-content">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Ecosistema Financiero: <span class="gradient-text">Más allá de los cobros.</span></h2>
                 <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Transformamos los datos de transacciones en oportunidades de negocio. Al aprovechar el flujo de caja real de las Organizaciones, podemos ofrecer las herramientas financieras que necesitan para crecer.</p>
                 
-                <div class="relative w-full max-w-lg mx-auto fade-in-up-delay-2" style="height: 180px;">
-                    <div id="ecosystem-carousel" class="relative w-full h-full">
+                <div class="relative w-full max-w-lg mx-auto fade-in-up-delay-2">
+                    <div id="ecosystem-carousel" class="relative w-full">
                         <div class="carousel-slide">
-                            <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg gradient-text">Créditos a medida</h3><p class="text-gray-400 mt-1">Préstamos ágiles y flexibles basados en el flujo de caja.</p></div>
+                            <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Créditos a medida</h3><p class="text-gray-300">Préstamos ágiles y flexibles basados en el flujo de caja.</p></div>
                         </div>
                         <div class="carousel-slide">
-                            <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg gradient-text">Leasing de activos</h3><p class="text-gray-400 mt-1">Financiamiento para que las empresas adquieran vehículos y equipos esenciales.</p></div>
+                            <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Leasing de activos</h3><p class="text-gray-300">Financiamiento para que las empresas adquieran vehículos y equipos esenciales.</p></div>
                         </div>
                         <div class="carousel-slide">
-                            <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg gradient-text">Adelanto de cobranzas</h3><p class="text-gray-400 mt-1">Ofrecemos liquidez inmediata al convertir cheques y facturas en efectivo.</p></div>
+                            <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Adelanto de cobranzas</h3><p class="text-gray-300">Ofrecemos liquidez inmediata al convertir cheques y facturas en efectivo.</p></div>
                         </div>
                          <div class="carousel-slide">
-                            <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg gradient-text">Fondos de inversión</h3><p class="text-gray-400 mt-1">Opciones simples y seguras para rentabilizar el dinero inactivo de las empresas.</p></div>
+                            <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Fondos de inversión</h3><p class="text-gray-300">Opciones simples y seguras para rentabilizar el dinero inactivo de las empresas.</p></div>
                         </div>
                         <div class="carousel-slide">
-                           <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg gradient-text">Emisión de tarjetas</h3><p class="text-gray-400 mt-1">Tarjetas de débito o crédito para gestionar gastos corporativos y personales.</p></div>
+                           <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Emisión de tarjetas</h3><p class="text-gray-300">Tarjetas de débito o crédito para gestionar gastos corporativos y personales.</p></div>
                         </div>
                         <div class="carousel-slide">
-                           <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg gradient-text">Seguros y garantías</h3><p class="text-gray-400 mt-1">Protección a medida para los activos y las operaciones del negocio.</p></div>
+                           <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Seguros y garantías</h3><p class="text-gray-300">Protección a medida para los activos y las operaciones del negocio.</p></div>
                         </div>
                         <div class="carousel-slide">
-                            <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg gradient-text">Pagos a proveedores</h3><p class="text-gray-400 mt-1">Soluciones para automatizar y optimizar los pagos a terceros, mejorando la gestión de la cadena de suministro.</p></div>
+                            <div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Pagos a proveedores</h3><p class="text-gray-300">Soluciones para automatizar y optimizar los pagos a terceros, mejorando la gestión de la cadena de suministro.</p></div>
                         </div>
                     </div>
                     <button id="eco-prev" class="carousel-nav-btn">
@@ -902,7 +912,6 @@
             </div>
         </div>
         
-        <!-- CAMBIO: Slide 13 con nuevo gráfico -->
         <div id="slide-13" class="slide">
             <div class="bg-grid"></div>
             <div class="slide-content">
@@ -1088,8 +1097,20 @@
                 let currentCarouselSlide = 0;
 
                 function showCarouselSlide(index) {
+                    const total = carouselSlides.length;
                     carouselSlides.forEach((slide, i) => {
-                        slide.classList.toggle('active', i === index);
+                        slide.classList.remove('active', 'prev', 'next');
+
+                        const prevIndex = (index - 1 + total) % total;
+                        const nextIndex = (index + 1) % total;
+
+                        if (i === index) {
+                            slide.classList.add('active');
+                        } else if (i === prevIndex) {
+                            slide.classList.add('prev');
+                        } else if (i === nextIndex) {
+                            slide.classList.add('next');
+                        }
                     });
                 }
 
