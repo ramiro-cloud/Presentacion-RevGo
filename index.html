@@ -25,11 +25,18 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 4vw;
+            padding: 8vw; /* More padding on mobile */
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(40px);
+            overflow-y: auto; /* Allow scrolling on small screens */
+        }
+        @media (min-width: 640px) {
+            .slide {
+                padding: 4vw; /* Less padding on larger screens */
+                overflow-y: hidden;
+            }
         }
         .slide.active {
             opacity: 1;
@@ -37,12 +44,21 @@
             transform: translateX(0);
         }
         .slide-content {
-            max-width: 1200px; /* Aumentado para dar más espacio */
+            max-width: 1200px; 
             width: 100%;
             text-align: center;
             position: relative;
             z-index: 1;
+            padding-top: 4rem; /* Space for content */
+            padding-bottom: 4rem;
         }
+        @media (min-width: 640px) {
+            .slide-content {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+
         .gradient-text {
             background: linear-gradient(90deg, #38bdf8, #34d399);
             -webkit-background-clip: text;
@@ -91,14 +107,20 @@
             background: rgba(20, 25, 40, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 40px; /* Smaller on mobile */
+            height: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 10;
+        }
+         @media (min-width: 640px) {
+            .nav-button {
+                width: 50px;
+                height: 50px;
+            }
         }
         .nav-button:hover {
             background: rgba(56, 189, 248, 0.2);
@@ -138,16 +160,24 @@
         
         .radial-glow-background {
             position: absolute;
-            bottom: -25vw;
-            left: -25vw;
-            width: 80vw;
-            height: 80vw;
+            bottom: -50vw;
+            left: -50vw;
+            width: 150vw;
+            height: 150vw;
             background: radial-gradient(circle, rgba(52, 211, 153, 0.2) 0%, rgba(52, 211, 153, 0) 70%);
             border-radius: 50%;
             z-index: 0;
             transform: scale(0.8);
             opacity: 0;
             transition: opacity 1.5s ease-out 0.5s, transform 1.5s ease-out 0.5s;
+        }
+        @media (min-width: 640px) {
+             .radial-glow-background {
+                bottom: -25vw;
+                left: -25vw;
+                width: 80vw;
+                height: 80vw;
+             }
         }
         .slide.active .radial-glow-background {
             transform: scale(1);
@@ -217,7 +247,7 @@
         }
 
         .glow-on-hover {
-            width: 280px;
+            width: 220px;
             height: 50px;
             border: none;
             outline: none;
@@ -228,6 +258,11 @@
             z-index: 0;
             border-radius: 0.75rem;
             font-weight: bold;
+        }
+        @media (min-width: 640px) {
+            .glow-on-hover {
+                 width: 280px;
+            }
         }
         .glow-on-hover:before {
             content: '';
@@ -271,8 +306,8 @@
         @property --p2 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
         @property --p3 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
         .donut-chart-improved {
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             position: relative;
             display: flex;
@@ -282,14 +317,20 @@
             transition: --p1 1s ease-out 0.3s, --p2 1s ease-out 0.4s, --p3 1s ease-out 0.5s;
             box-shadow: 0 0 40px rgba(56, 189, 248, 0.2), inset 0 0 20px rgba(10, 14, 26, 0.5);
         }
+         @media (min-width: 768px) {
+            .donut-chart-improved {
+                 width: 250px;
+                height: 250px;
+            }
+        }
         .slide.active .donut-chart-improved {
             --p1: 60%;
             --p2: 85%;
             --p3: 100%;
         }
         .donut-chart-center {
-            width: 160px;
-            height: 160px;
+            width: 130px;
+            height: 130px;
             background: #0a0e1a;
             border-radius: 50%;
             display: flex;
@@ -297,6 +338,12 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+        }
+         @media (min-width: 768px) {
+            .donut-chart-center {
+                width: 160px;
+                height: 160px;
+            }
         }
 
         .pulse-button { animation: pulse 2s infinite 1s; }
@@ -370,8 +417,8 @@
         #ecosystem-carousel {
             perspective: 1200px;
             transform-style: preserve-3d;
-            height: 180px; /* Reduced height */
-            max-width: 380px; /* Constrain width */
+            height: 180px;
+            max-width: 380px;
             margin: auto;
         }
         .carousel-slide {
@@ -397,7 +444,7 @@
             border: 1px solid rgba(56, 189, 248, 0.3);
         }
         .carousel-slide.active .glass-card {
-            background: #141928; /* Solid, opaque background */
+            background: #141928;
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
         }
@@ -418,8 +465,8 @@
             background: rgba(20, 25, 40, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -427,13 +474,23 @@
             transition: all 0.3s ease;
             z-index: 5;
         }
+        @media (min-width: 640px) {
+            .carousel-nav-btn {
+                 width: 40px;
+                height: 40px;
+            }
+        }
         .carousel-nav-btn:hover {
             background: rgba(56, 189, 248, 0.2);
             border-color: #38bdf8;
             transform: translateY(-50%) scale(1.1);
         }
-        #eco-prev { left: -60px; }
-        #eco-next { right: -60px; }
+        #eco-prev { left: -40px; }
+        #eco-next { right: -40px; }
+         @media (min-width: 640px) {
+            #eco-prev { left: -60px; }
+            #eco-next { right: -60px; }
+        }
         
         .interactive-3d-card {
             transition: transform 0.1s linear;
@@ -458,7 +515,7 @@
             height: 280px;
             background: rgba(10, 14, 26, 0.3);
             border-radius: 1rem;
-            padding: 2rem 2rem 2.5rem 3rem;
+            padding: 2rem 1rem 2.5rem 2rem;
             box-sizing: border-box;
         }
         .y-axis {
@@ -466,7 +523,7 @@
             left: 0;
             top: 0;
             bottom: 2.5rem;
-            width: 3rem;
+            width: 2rem;
             border-right: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             flex-direction: column;
@@ -476,13 +533,13 @@
         }
         .y-axis span {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.6rem;
             color: #9ca3af;
         }
         .x-axis {
             position: absolute;
-            left: 3rem;
-            right: 2rem;
+            left: 2rem;
+            right: 1rem;
             bottom: 0;
             height: 2.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -491,7 +548,7 @@
             align-items: center;
         }
         .x-axis span {
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             font-weight: 500;
         }
         .chart-bars {
@@ -500,10 +557,10 @@
             display: flex;
             justify-content: space-around;
             align-items: flex-end;
-            gap: 2rem;
+            gap: 1rem;
         }
         .bar {
-            width: 50px;
+            width: 40px;
             border-radius: 0.375rem 0.375rem 0 0;
             position: relative;
         }
@@ -518,11 +575,11 @@
         }
         .bar .label {
             position: absolute;
-            top: -25px;
+            top: -20px;
             left: 50%;
             transform: translateX(-50%);
             font-weight: bold;
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             color: #fff;
         }
     </style>
@@ -534,16 +591,17 @@
         <div id="slide-1" class="slide active">
             <div class="bg-grid"></div>
             <div class="slide-content text-center">
-                <div class="mb-8 w-48 h-48 md:w-64 md:h-64 mx-auto flex items-center justify-center fade-in-up">
+                <div class="mb-8 w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 mx-auto flex items-center justify-center fade-in-up">
                         <img src="./Logo RevGo.png" alt="Logo RevGo" class="max-w-full max-h-full">
                 </div>
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight fade-in-up-delay-1">Agiliza tus finanzas</h1>
-                <p class="text-2xl md:text-3xl mt-4 font-bold fade-in-up-delay-2"><span class="gradient-text">Automatiza tus cobranzas</span>, la nueva era digital.</p>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight fade-in-up-delay-1">Agiliza tus finanzas</h1>
+                <p class="text-xl sm:text-2xl md:text-3xl mt-4 font-bold fade-in-up-delay-2"><span class="gradient-text">Automatiza tus cobranzas</span>, la nueva era digital.</p>
                 <button id="start-btn" class="glow-on-hover mt-16 fade-in-up-delay-3">Comenzar Presentación</button>
+                <p class="text-xs sm:text-sm text-gray-400 mt-16 fade-in-up-delay-4 absolute bottom-[2vh] w-full left-0">Conoce nuestra página web: <a href="https://erev.com.ar/college" target="_blank" class="underline hover:text-cyan-400">https://erev.com.ar/college</a></p>
             </div>
         </div>
 
-        <!-- Slide 2: El Problema y El Mercado (FUSIONADO Y MODIFICADO) -->
+        <!-- Slide 2: El Problema y El Mercado -->
         <div id="slide-2" class="slide">
             <div class="falling-arrows-background">
                 <span style="left: 10%; animation-delay: 0s; animation-duration: 4s; border-color: #38bdf8;"></span>
@@ -553,50 +611,50 @@
                 <span style="left: 90%; animation-delay: 0.8s; animation-duration: 5s; border-color: #34d399;"></span>
             </div>
             <div class="slide-content">
-                <div class="grid lg:grid-cols-2 gap-x-12 lg:items-end">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16 lg:items-end">
                     <!-- Columna Izquierda: El Problema -->
                     <div class="text-center">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Las empresas <span class="gradient-text">pierden tiempo y dinero.</span></h2>
-                        <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-xl mx-auto">En Argentina, la gestión de cobranzas, cuentas corrientes y registros contables conlleva una <strong class="text-white">carga administrativa significativa</strong>. Muchas organizaciones pierden tiempo y recursos en <strong class="text-white">procesos manuales</strong>, lo que genera costos, afecta la liquidez y limita el crecimiento.</p>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 fade-in-up">Las empresas <span class="gradient-text">pierden tiempo y dinero.</span></h2>
+                        <p class="text-base md:text-lg text-gray-300 mb-8 fade-in-up-delay-1 max-w-xl mx-auto">En Argentina, la gestión de cobranzas conlleva una <strong class="text-white">carga administrativa significativa</strong>, lo que genera costos, afecta la liquidez y limita el crecimiento.</p>
                         <div class="grid grid-cols-1 gap-6 text-left max-w-md mx-auto">
                             <div class="glass-card fade-in-up-delay-2">
                                 <div class="flex items-center mb-2">
-                                    <svg class="w-10 h-10 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17,20h5V9h-5V20z M15,20H3V3h12V20z M3,8h12"></path></svg>
-                                    <h3 class="text-2xl font-bold ml-4">6 de cada 10</h3>
+                                    <svg class="w-8 h-8 md:w-10 md:h-10 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17,20h5V9h-5V20z M15,20H3V3h12V20z M3,8h12"></path></svg>
+                                    <h3 class="text-xl md:text-2xl font-bold ml-4">6 de cada 10</h3>
                                 </div>
-                                <p class="text-gray-300">empresas tienen problemas para gestionar sus finanzas, registrando deudas y teniendo que notificar personas por impagos.</p>
+                                <p class="text-sm md:text-base text-gray-300">empresas tienen problemas para gestionar sus finanzas, registrando deudas y teniendo que notificar personas por impagos.</p>
                             </div>
                             <div class="glass-card fade-in-up-delay-3">
                                 <div class="flex items-center mb-2">
-                                <svg class="w-10 h-10 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V7a2 2 0 012-2h5l4 4v7a2 2 0 01-2 2z"></path></svg>
-                                    <h3 class="text-2xl font-bold ml-4">Muchas horas</h3>
+                                <svg class="w-8 h-8 md:w-10 md:h-10 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V7a2 2 0 012-2h5l4 4v7a2 2 0 01-2 2z"></path></svg>
+                                    <h3 class="text-xl md:text-2xl font-bold ml-4">Muchas horas</h3>
                                 </div>
-                                <p class="text-gray-300">Consumidas en procesos manuales de conciliación.</p>
+                                <p class="text-sm md:text-base text-gray-300">Consumidas en procesos manuales de conciliación.</p>
                             </div>
                              <div class="glass-card fade-in-up-delay-4">
                                 <div class="flex items-center mb-2">
-                                    <svg class="w-10 h-10 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                                    <h3 class="text-2xl font-bold ml-4">Gestión ineficiente</h3>
+                                    <svg class="w-8 h-8 md:w-10 md:h-10 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                                    <h3 class="text-xl md:text-2xl font-bold ml-4">Gestión ineficiente</h3>
                                 </div>
-                                <p class="text-gray-300">Las billeteras digitales no resuelven la gestión financiera.</p>
+                                <p class="text-sm md:text-base text-gray-300">Las billeteras digitales no resuelven la gestión financiera.</p>
                             </div>
                         </div>
                     </div>
                     <!-- Columna Derecha: El Mercado -->
-                    <div class="text-center mt-12 lg:mt-0">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-12 fade-in-up-delay-5">El mercado está <span class="gradient-text">listo.</span></h2>
+                    <div class="text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-8 fade-in-up-delay-5">El mercado está <span class="gradient-text">listo.</span></h2>
                         <div class="grid grid-cols-1 gap-8 text-center max-w-sm mx-auto">
-                             <div class="glass-card fade-in-up-delay-6 p-6 flex flex-col justify-center min-h-[160px]">
-                                <h3 class="text-4xl font-bold gradient-text"><span class="counter-value" data-target="41">0</span>M</h3>
-                                <p class="mt-2 text-gray-300 text-sm">de transferencias mensuales en Argentina.</p>
+                             <div class="glass-card fade-in-up-delay-6 p-4 flex flex-col justify-center min-h-[140px]">
+                                <h3 class="text-3xl md:text-4xl font-bold gradient-text"><span class="counter-value" data-target="41">0</span>M</h3>
+                                <p class="mt-2 text-xs md:text-sm text-gray-300">de transferencias mensuales en Argentina.</p>
                             </div>
-                            <div class="glass-card fade-in-up-delay-7 p-6 flex flex-col justify-center min-h-[160px]">
-                                <h3 class="text-4xl font-bold gradient-text">USD <span class="counter-value" data-target="26.7">0</span>B</h3>
-                                <p class="mt-2 text-gray-300 text-sm">fue el valor del mercado e-commerce en 2023 (+87% interanual).</p>
+                            <div class="glass-card fade-in-up-delay-7 p-4 flex flex-col justify-center min-h-[140px]">
+                                <h3 class="text-3xl md:text-4xl font-bold gradient-text">USD <span class="counter-value" data-target="175">0</span>B</h3>
+                                <p class="mt-2 text-xs md:text-sm text-gray-300">es la proyección del valor del mercado e-commerce para 2026.</p>
                             </div>
-                            <div class="glass-card fade-in-up-delay-8 p-6 flex flex-col justify-center min-h-[160px]">
-                                <h3 class="text-2xl font-bold mb-2 gradient-text">Pagos digitales</h3>
-                                <p class="text-gray-300 text-md">En 2025, se proyecta que el 56% de los pagos con código QR se harán a través de una CBU (Clave Bancaria Uniforme) y el 44% con una CVU (Clave Virtual Uniforme).</p>
+                            <div class="glass-card fade-in-up-delay-8 p-4 flex flex-col justify-center min-h-[140px]">
+                                <h3 class="text-xl md:text-2xl font-bold mb-2 gradient-text">Pagos digitales</h3>
+                                <p class="text-sm md:text-md text-gray-300">En 2025, se proyecta que el 56% de los pagos con QR se harán vía CBU y el 44% con CVU.</p>
                             </div>
                         </div>
                     </div>
@@ -604,49 +662,49 @@
             </div>
         </div>
 
-        <!-- Slide 3: La Solución (antes slide 3) -->
+        <!-- Slide 3: La Solución -->
         <div id="slide-3" class="slide">
             <div class="bg-grid"></div>
             <div class="slide-content">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">La Solución: <span class="gradient-text">RevGo</span></h2>
-                <p class="text-xl text-gray-300 mb-12 fade-in-up-delay-1">RevGo es una billetera digital integral que automatiza tus procesos financieros.</p>
-                <div class="grid md:grid-cols-3 gap-8 text-left">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 fade-in-up">La Solución: <span class="gradient-text">RevGo</span></h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-12 fade-in-up-delay-1">RevGo es una billetera digital integral que automatiza tus procesos financieros.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
                     <div class="glass-card holographic-card fade-in-up-delay-2">
-                        <h3 class="font-bold text-xl mb-2 gradient-text">Optimiza el flujo de caja</h3>
-                        <p class="text-gray-300">Al simplificar la gestión administrativa, RevGo mejora la liquidez de tu empresa, permitiendo que crezcas de forma escalable y sin límite.</p>
+                        <h3 class="font-bold text-lg md:text-xl mb-2 gradient-text">Optimiza el flujo de caja</h3>
+                        <p class="text-sm md:text-base text-gray-300">Al simplificar la gestión administrativa, RevGo mejora la liquidez de tu empresa, permitiendo que crezcas de forma escalable y sin límite.</p>
                     </div>
                     <div class="glass-card holographic-card fade-in-up-delay-3">
-                        <h3 class="font-bold text-xl mb-2 gradient-text">Agiliza las cobranzas</h3>
-                        <p class="text-gray-300">Automatiza los cobros recurrentes y por transferencia para asegurar la puntualidad de los pagos y reducir el esfuerzo manual.</p>
+                        <h3 class="font-bold text-lg md:text-xl mb-2 gradient-text">Agiliza las cobranzas</h3>
+                        <p class="text-sm md:text-base text-gray-300">Automatiza los cobros recurrentes y por transferencia para asegurar la puntualidad de los pagos y reducir el esfuerzo manual.</p>
                     </div>
                     <div class="glass-card holographic-card fade-in-up-delay-4">
-                        <h3 class="font-bold text-xl mb-2 gradient-text">Simplifica la gestión</h3>
-                        <p class="text-gray-300">La plataforma integra y simplifica el manejo de tus finanzas, desde las cuentas corrientes de cada cliente hasta las registraciones.</p>
+                        <h3 class="font-bold text-lg md:text-xl mb-2 gradient-text">Simplifica la gestión</h3>
+                        <p class="text-sm md:text-base text-gray-300">La plataforma integra y simplifica el manejo de tus finanzas, desde las cuentas corrientes de cada cliente hasta las registraciones.</p>
                     </div>
                 </div>
-                <p class="mt-12 text-xl italic text-gray-400 fade-in-up-delay-5">“No necesitan otra billetera… necesitan recibir el pago y saber quién pagó.”</p>
+                <p class="mt-12 text-lg md:text-xl italic text-gray-400 fade-in-up-delay-5">“No necesitan otra billetera… necesitan recibir el pago y saber quién pagó.”</p>
             </div>
         </div>
         
-        <!-- Slide 4: Qué es RevGo (antes slide 5) -->
+        <!-- Slide 4: Qué es RevGo -->
         <div id="slide-4" class="slide">
             <div class="bg-tech-flow"></div>
             <div class="slide-content">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 fade-in-up">¿Qué es <span class="gradient-text">RevGo?</span></h2>
-                <div class="grid md:grid-cols-2 gap-10 items-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 fade-in-up">¿Qué es <span class="gradient-text">RevGo?</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                     <div class="fade-in-up-delay-1">
                         <img src="./image 104.png" alt="Dashboard de RevGo" class="rounded-lg shadow-2xl">
                     </div>
                     <div class="text-left space-y-4">
-                        <p class="text-gray-300 text-lg fade-in-up-delay-2">RevGo es una poderosa billetera digital que se integra a sistemas de gestión, simplificando la gestión financiera de tu empresa.</p>
+                        <p class="text-base md:text-lg text-gray-300 fade-in-up-delay-2">RevGo es una poderosa billetera digital que se integra a sistemas de gestión, simplificando la gestión financiera de tu empresa.</p>
                         <div class="grid grid-cols-2 gap-4 pt-2 fade-in-up-delay-3">
                             <div class="glass-card p-4 text-center">
-                                <h4 class="font-bold gradient-text text-lg">"Rev"</h4>
-                                <p class="text-sm text-gray-400">Evoca "ingresos" o una "revolución" financiera.</p>
+                                <h4 class="font-bold gradient-text text-md md:text-lg">"Rev"</h4>
+                                <p class="text-xs md:text-sm text-gray-400">Evoca "ingresos" o una "revolución" financiera.</p>
                             </div>
                             <div class="glass-card p-4 text-center">
-                                <h4 class="font-bold gradient-text text-lg">"Go"</h4>
-                                <p class="text-sm text-gray-400">Transmite movimiento y facilidad de uso.</p>
+                                <h4 class="font-bold gradient-text text-md md:text-lg">"Go"</h4>
+                                <p class="text-xs md:text-sm text-gray-400">Transmite movimiento y facilidad de uso.</p>
                             </div>
                         </div>
                     </div>
@@ -654,68 +712,65 @@
             </div>
         </div>
         
-        <!-- Slide 5: Cómo funciona (antes slide 6) -->
+        <!-- Slide 5: Cómo funciona -->
         <div id="slide-5" class="slide">
             <div class="bg-grid"></div>
             <div class="slide-content">
-                <h2 class="text-4xl md:text-5xl font-bold mb-20 fade-in-up">Simpleza en <span class="gradient-text">4 pasos.</span></h2>
-                <div class="relative">
-                    <svg class="absolute top-[3rem] left-0 w-full h-px" viewbox="0 0 1000 1" preserveAspectRatio="none">
-                        <defs>
-                            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#38bdf8" />
-                                <stop offset="100%" stop-color="#34d399" />
-                            </linearGradient>
-                        </defs>
+                <h2 class="text-3xl md:text-5xl font-bold mb-10 md:mb-20 fade-in-up">Simpleza en <span class="gradient-text">4 pasos.</span></h2>
+                <div class="relative w-full">
+                    <!-- Connector for mobile (vertical) -->
+                    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-0.5 h-full bg-gray-700 md:hidden"></div>
+                    <!-- Connector for desktop (horizontal) -->
+                    <svg class="absolute top-[3rem] left-0 w-full h-px hidden md:block" viewbox="0 0 1000 1" preserveAspectRatio="none">
+                        <defs><linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#38bdf8" /><stop offset="100%" stop-color="#34d399" /></linearGradient></defs>
                         <path id="connector-path" d="M 125 0.5 L 875 0.5" stroke="url(#line-gradient)" stroke-width="2" fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke" />
                     </svg>
-                    <div class="relative grid md:grid-cols-4 gap-8 items-start">
+                    <div class="relative grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8 items-start">
                         <div class="text-center fade-in-up-delay-1">
-                            <div class="w-24 h-24 mx-auto glass-card holographic-icon-card flex items-center justify-center rounded-full mb-4">
-                                <svg class="w-12 h-12 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h-1m-1 6v-1M4 12H3m1-6h1M7.757 4.243l.707.707m10.586 10.586l.707.707M4.243 16.243l.707-.707m10.586-10.586l.707-.707M12 20a8 8 0 100-16 8 8 0 000 16z"></path></svg>
+                            <div class="w-20 h-20 md:w-24 md:h-24 mx-auto glass-card holographic-icon-card flex items-center justify-center rounded-full mb-4">
+                                <svg class="w-10 h-10 md:w-12 md:h-12 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h-1m-1 6v-1M4 12H3m1-6h1M7.757 4.243l.707.707m10.586 10.586l.707.707M4.243 16.243l.707-.707m10.586-10.586l.707-.707M12 20a8 8 0 100-16 8 8 0 000 16z"></path></svg>
                             </div>
-                            <h3 class="font-bold text-xl mb-2">1. PAGO</h3>
-                            <p class="text-gray-400">El cliente paga con cualquier medio de pago.</p>
+                            <h3 class="font-bold text-lg mb-2">1. PAGO</h3>
+                            <p class="text-sm text-gray-400">El cliente paga con cualquier medio de pago.</p>
                         </div>
                         <div class="text-center fade-in-up-delay-2">
-                            <div class="w-24 h-24 mx-auto glass-card holographic-icon-card flex items-center justify-center rounded-full mb-4">
-                                <svg class="w-12 h-12 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            <div class="w-20 h-20 md:w-24 md:h-24 mx-auto glass-card holographic-icon-card flex items-center justify-center rounded-full mb-4">
+                                <svg class="w-10 h-10 md:w-12 md:h-12 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                             </div>
-                            <h3 class="font-bold text-xl mb-2">2. ACREDITACIÓN</h3>
-                            <p class="text-gray-400">El pago se acredita de forma inmediata en tu cuenta revgo.</p>
+                            <h3 class="font-bold text-lg mb-2">2. ACREDITACIÓN</h3>
+                            <p class="text-sm text-gray-400">El pago se acredita de forma inmediata en tu cuenta revgo.</p>
                         </div>
                         <div class="text-center fade-in-up-delay-3">
-                            <div class="w-24 h-24 mx-auto glass-card holographic-icon-card flex items-center justify-center rounded-full mb-4">
-                                <svg class="w-12 h-12 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M9 6h6M9 18h6m-6-3h6m-6-6h6"></path></svg>
+                            <div class="w-20 h-20 md:w-24 md:h-24 mx-auto glass-card holographic-icon-card flex items-center justify-center rounded-full mb-4">
+                                <svg class="w-10 h-10 md:w-12 md:h-12 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M9 6h6M9 18h6m-6-3h6m-6-6h6"></path></svg>
                             </div>
-                            <h3 class="font-bold text-xl mb-2">3. CONCILIACIÓN</h3>
-                            <p class="text-gray-400">revgo registra y concilia el pago automáticamente.</p>
+                            <h3 class="font-bold text-lg mb-2">3. CONCILIACIÓN</h3>
+                            <p class="text-sm text-gray-400">revgo registra y concilia el pago automáticamente.</p>
                         </div>
                         <div class="text-center fade-in-up-delay-4">
-                            <div class="w-24 h-24 mx-auto glass-card holographic-icon-card flex items-center justify-center rounded-full mb-4">
-                            <svg class="w-12 h-12 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            <div class="w-20 h-20 md:w-24 md:h-24 mx-auto glass-card holographic-icon-card flex items-center justify-center rounded-full mb-4">
+                            <svg class="w-10 h-10 md:w-12 md:h-12 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                             </div>
-                            <h3 class="font-bold text-xl mb-2">4. REPORTE</h3>
-                            <p class="text-gray-400">La PyME sabe quién pagó y quién debe, al instante.</p>
+                            <h3 class="font-bold text-lg mb-2">4. REPORTE</h3>
+                            <p class="text-sm text-gray-400">La PyME sabe quién pagó y quién debe, al instante.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Slide 6: Modelo de Negocio y Ecosistema (Reestructurado Verticalmente) -->
+        <!-- Slide 6: Modelo de Negocio y Ecosistema -->
         <div id="slide-6" class="slide">
             <div class="radial-glow-background"></div>
             <div class="slide-content">
-                <!-- Contenedor principal ahora es flex-col para apilar verticalmente -->
                 <div class="flex flex-col items-center justify-center">
                     <!-- Sección 1: Modelo de Negocio -->
-                    <div class="text-center w-full mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Modelo de Negocio</h2>
-                        <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-lg mx-auto">Un modelo diseñado para maximizar ingresos a partir de tres pilares, asegurando un crecimiento escalable.</p>
-                        <div class="grid md:grid-cols-2 gap-8 items-center max-w-3xl mx-auto">
+                    <div class="text-center w-full mb-10 md:mb-16">
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4 fade-in-up">Modelo de Negocio</h2>
+                        <p class="text-base md:text-lg text-gray-300 mb-8 md:mb-10 fade-in-up-delay-1 max-w-lg mx-auto">Un modelo diseñado para maximizar ingresos a partir de tres pilares, asegurando un crecimiento escalable.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-3xl mx-auto">
                             <div class="fade-in-up-delay-2">
-                                <div class="relative w-64 h-64 mx-auto">
+                                <div class="relative w-48 h-48 md:w-64 md:h-64 mx-auto">
                                     <div class="donut-chart-improved w-full h-full">
                                         <div class="donut-chart-center" style="width: 65%; height: 65%;">
                                             <span class="text-3xl font-bold gradient-text">100%</span>
@@ -725,25 +780,25 @@
                                 </div>
                             </div>
                             <div class="text-left space-y-3 fade-in-up-delay-3 w-full max-w-xs mx-auto">
-                                <div class="glass-card p-3"><h3 class="text-md font-bold text-cyan-400">Comisiones por automatización (60%)</h3></div>
-                                <div class="glass-card p-3"><h3 class="text-md font-bold text-green-400">Gestión de capital del cliente (25%)</h3></div>
-                                <div class="glass-card p-3"><h3 class="text-md font-bold text-purple-400">Servicios de valor agregado (15%)</h3></div>
+                                <div class="glass-card p-3"><h3 class="text-sm md:text-md font-bold text-cyan-400">Comisiones por automatización (60%)</h3></div>
+                                <div class="glass-card p-3"><h3 class="text-sm md:text-md font-bold text-green-400">Gestión de capital del cliente (25%)</h3></div>
+                                <div class="glass-card p-3"><h3 class="text-sm md:text-md font-bold text-purple-400">Servicios de valor agregado (15%)</h3></div>
                             </div>
                         </div>
                     </div>
                     <!-- Sección 2: Ecosistema -->
                      <div class="text-center w-full">
-                         <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up-delay-4">Ecosistema Financiero</h2>
-                         <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-5 max-w-lg mx-auto">Transformamos los datos de transacciones en oportunidades de negocio para que las empresas crezcan.</p>
-                         <div class="relative w-full max-w-sm mx-auto fade-in-up-delay-6">
+                         <h2 class="text-3xl md:text-5xl font-bold mb-4 fade-in-up-delay-4">Ecosistema Financiero</h2>
+                         <p class="text-base md:text-lg text-gray-300 mb-8 md:mb-10 fade-in-up-delay-5 max-w-lg mx-auto">Transformamos los datos de transacciones en oportunidades de negocio para que las empresas crezcan.</p>
+                         <div class="relative w-full max-w-xs sm:max-w-sm mx-auto fade-in-up-delay-6">
                              <div id="ecosystem-carousel" class="relative w-full">
                                 <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Créditos a medida</h3><p class="text-gray-300 text-xs">Préstamos ágiles y flexibles basados en el flujo de caja.</p></div></div>
                                 <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Leasing de activos</h3><p class="text-gray-300 text-xs">Financiamiento para que las empresas adquieran vehículos y equipos esenciales.</p></div></div>
                                 <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Adelanto de cobranzas</h3><p class="text-gray-300 text-xs">Ofrecemos liquidez inmediata al convertir cheques y facturas en efectivo.</p></div></div>
-                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Fondos de inversión</h3><p class="text-gray-300 text-xs">Opciones simples y seguras para rentabilizar el dinero inactivo de las empresas.</p></div></div>
-                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Emisión de tarjetas</h3><p class="text-gray-300 text-xs">Tarjetas de débito o crédito para gestionar gastos corporativos y personales.</p></div></div>
-                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Seguros y garantías</h3><p class="text-gray-300 text-xs">Protección a medida para los activos y las operaciones del negocio.</p></div></div>
-                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Pagos a proveedores</h3><p class="text-gray-300 text-xs">Soluciones para automatizar y optimizar los pagos a terceros.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Fondos de inversión</h3><p class="text-gray-300 text-xs">Opciones simples y seguras para rentabilizar el dinero inactivo.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Emisión de tarjetas</h3><p class="text-gray-300 text-xs">Tarjetas para gestionar gastos corporativos y personales.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Seguros y garantías</h3><p class="text-gray-300 text-xs">Protección a medida para los activos y operaciones.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Pagos a proveedores</h3><p class="text-gray-300 text-xs">Soluciones para automatizar y optimizar pagos a terceros.</p></div></div>
                              </div>
                              <button id="eco-prev" class="carousel-nav-btn"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                              <button id="eco-next" class="carousel-nav-btn"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
@@ -753,77 +808,77 @@
             </div>
         </div>
 
-        <!-- Slide 7: Validación (antes slide 9) -->
+        <!-- Slide 7: Validación -->
         <div id="slide-7" class="slide">
             <div class="bg-grid"></div>
             <div class="slide-content">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Validación temprana y <span class="gradient-text">alto potencial.</span></h2>
-                <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Hemos validado nuestro modelo de negocio y logrado hitos clave que demuestran la demanda de nuestro producto en el mercado.</p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 fade-in-up">Validación temprana y <span class="gradient-text">alto potencial.</span></h2>
+                <p class="text-base md:text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Hemos validado nuestro modelo de negocio y logrado hitos clave que demuestran la demanda de nuestro producto en el mercado.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                     <div class="glass-card p-6 fade-in-up-delay-2">
                         <h3 class="font-bold text-lg mb-2 gradient-text">Validación con Erev</h3>
-                        <p class="text-gray-300 text-sm">Análisis de necesidades clave del mercado a partir de nuestro trabajo con eRev.</p>
+                        <p class="text-sm text-gray-300">Análisis de necesidades clave del mercado a partir de nuestro trabajo con eRev.</p>
                     </div>
                     <div class="glass-card p-6 fade-in-up-delay-3">
                         <h3 class="font-bold text-lg mb-2 gradient-text">Pipeline Inicial Sólido</h3>
-                        <p class="text-gray-300 text-sm">Conversaciones avanzadas con clubes, colegios y gimnasios listos para implementar la solución.</p>
+                        <p class="text-sm text-gray-300">Conversaciones avanzadas con clubes, colegios y gimnasios listos para implementar la solución.</p>
                     </div>
                     <div class="glass-card p-6 fade-in-up-delay-4">
                         <h3 class="font-bold text-lg mb-2 gradient-text">Acuerdo Estratégico</h3>
-                        <p class="text-gray-300 text-sm">Conversaciones con BIND para utilizar sus servicios financieros y simplificar el lanzamiento.</p>
+                        <p class="text-sm text-gray-300">Conversaciones con BIND para utilizar sus servicios financieros y simplificar el lanzamiento.</p>
                     </div>
                     <div class="md:col-span-2 lg:col-span-3 glass-card p-6 fade-in-up-delay-5">
                         <h3 class="font-bold text-lg mb-2 gradient-text">Búsqueda de Socio Financiero</h3>
-                        <p class="text-gray-300 text-sm">Buscamos un socio estratégico que nos ayude a potenciar nuestra oferta y acelerar el crecimiento.</p>
+                        <p class="text-sm text-gray-300">Buscamos un socio estratégico que nos ayude a potenciar nuestra oferta y acelerar el crecimiento.</p>
                     </div>
                 </div>
-                <p class="mt-10 text-xl italic text-gray-400 fade-in-up-delay-6">"Ya estamos en conversaciones con diferentes Organizaciones de servicios que esperan una solución como la nuestra."</p>
+                <p class="mt-10 text-lg md:text-xl italic text-gray-400 fade-in-up-delay-6">"Ya estamos en conversaciones con diferentes Organizaciones de servicios que esperan una solución como la nuestra."</p>
             </div>
         </div>
         
-        <!-- Slide 8: Roadmap (antes slide 10) -->
+        <!-- Slide 8: Roadmap -->
         <div id="slide-8" class="slide">
             <div class="bg-grid"></div>
             <div class="slide-content">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Roadmap a <span class="gradient-text">24 meses.</span></h2>
-                <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Un plan de crecimiento claro, regulado y medible, enfocado en la construcción de nuestro ecosistema financiero.</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 fade-in-up">Roadmap a <span class="gradient-text">24 meses.</span></h2>
+                <p class="text-base md:text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Un plan de crecimiento claro, regulado y medible, enfocado en la construcción de nuestro ecosistema financiero.</p>
                 <div class="max-w-4xl mx-auto relative text-left">
                     <div class="absolute left-4 top-0 w-0.5 h-full bg-gray-700"></div>
                     <!-- Primeros 12 meses -->
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold gradient-text mb-4 fade-in-up-delay-2 pl-12 relative">
+                    <div class="mb-12">
+                        <h3 class="text-xl md:text-3xl font-bold gradient-text mb-4 fade-in-up-delay-2 pl-12 relative">
                             <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#0a0e1a]"></div>
                             Primeros 12 Meses
                         </h3>
-                        <div class="relative pl-12">
-                            <p class="mb-2 fade-in-up-delay-3"><strong>Fase 1 (Meses 1-6):</strong> Registro PSPCP (vía BIND), lanzamiento del MVP de cobranzas y habilitación de transferencias pull programadas.</p>
-                            <p class="fade-in-up-delay-4"><strong>Fase 2 (Meses 7-12):</strong> Integración de QR interoperable, emisión de tarjetas y lanzamiento del piloto con Organizaciones seleccionadas.</p>
+                        <div class="relative pl-12 text-base md:text-lg">
+                            <p class="mb-2 fade-in-up-delay-3"><strong>Fase 1 (Meses 1-8):</strong> Registro PSPCP (vía BIND), lanzamiento del MVP de cobranzas y habilitación de transferencias pull programadas.</p>
+                            <p class="fade-in-up-delay-4"><strong>Fase 2 (Meses 8-12):</strong> Integración de QR interoperable, cuenta remunerada e inversiones, y lanzamiento del piloto con Organizaciones seleccionadas.</p>
                         </div>
                     </div>
                      <!-- Siguientes 12 meses -->
                     <div class="mt-8">
-                        <h3 class="text-2xl font-bold gradient-text mb-4 fade-in-up-delay-5 pl-12 relative">
+                        <h3 class="text-xl md:text-2xl font-bold gradient-text mb-4 fade-in-up-delay-5 pl-12 relative">
                             <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-purple-400 border-4 border-[#0a0e1a]"></div>
                             Siguientes 12 Meses
                         </h3>
                         <div class="relative pl-12">
-                           <p class="fade-in-up-delay-6"><strong>Fase 3 (Meses 13-24):</strong> Integración con eREV, apertura de API para terceros y expansión de servicios financieros (adelantos y microcréditos).</p>
+                           <p class="text-base md:text-lg fade-in-up-delay-6"><strong>Fase 3 (Meses 13-24):</strong> Integración con sistemas de gestión, apertura de API para terceros y expansión de servicios financieros (adelantos y créditos).</p>
                         </div>
                     </div>
                 </div>
-                <p class="mt-10 text-xl italic text-gray-400 fade-in-up-delay-7 text-center">"Un roadmap concreto, regulado y medible para un crecimiento sostenible."</p>
+                <p class="mt-10 text-lg md:text-xl italic text-gray-400 fade-in-up-delay-7 text-center">"Un roadmap concreto, regulado y medible para un crecimiento sostenible."</p>
             </div>
         </div>
         
-        <!-- Slide 9: Competencia (antes slide 11) -->
+        <!-- Slide 9: Competencia -->
         <div id="slide-9" class="slide">
             <div class="bg-grid"></div>
             <div class="slide-content">
-                <h2 class="text-4xl md:text-5xl font-bold mb-12 fade-in-up">Jugamos en un espacio <span class="gradient-text">único.</span></h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-left">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 fade-in-up">Jugamos en un espacio <span class="gradient-text">único.</span></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-left text-xs sm:text-sm">
                     <!-- revgo -->
                     <div id="revgo-card" class="glass-card interactive-3d-card border-2 border-cyan-400 shadow-lg shadow-cyan-500/20 p-4 fade-in-up-delay-1">
-                        <h3 class="text-2xl font-black mb-4">rev<span class="gradient-text">go</span></h3>
+                        <h3 class="text-lg sm:text-xl md:text-2xl font-black mb-4">rev<span class="gradient-text">go</span></h3>
                         <ul class="space-y-3">
                             <li class="flex items-center"><span class="check-anim text-green-400 mr-2" style="animation-delay: 0.4s;">✔</span> Cobranza Recurrente</li>
                             <li class="flex items-center"><span class="check-anim text-green-400 mr-2" style="animation-delay: 0.5s;">✔</span> Conciliación Automática</li>
@@ -833,17 +888,17 @@
                     </div>
                     <!-- Mercado Pago -->
                     <div class="glass-card p-4 fade-in-up-delay-2">
-                        <h3 class="text-xl font-bold text-gray-300 mb-4">Mercado Pago</h3>
+                        <h3 class="text-md sm:text-lg font-bold text-gray-300 mb-4">Mercado Pago</h3>
                         <ul class="space-y-3">
                             <li class="flex items-center"><span class="check-anim text-green-400 mr-2" style="animation-delay: 0.5s;">✔</span> Cobranza Recurrente</li>
                             <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.6s;">✘</span> Conciliación Automática</li>
                             <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.7s;">✘</span> Foco PyMEs Servicios</li>
-                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.8s;">✘</span> Gestión financiera integral</li>
+                            <li class="flex items-center"><span class="check-anim text-green-400 mr-2" style="animation-delay: 0.8s;">✔</span> Gestión financiera integral</li>
                         </ul>
                     </div>
                     <!-- MODO -->
                     <div class="glass-card p-4 fade-in-up-delay-3">
-                        <h3 class="text-xl font-bold text-gray-300 mb-4">MODO</h3>
+                        <h3 class="text-md sm:text-lg font-bold text-gray-300 mb-4">MODO</h3>
                         <ul class="space-y-3">
                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.6s;">✘</span> Cobranza Recurrente</li>
                             <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.7s;">✘</span> Conciliación Automática</li>
@@ -853,7 +908,7 @@
                     </div>
                     <!-- Cuenta DNI -->
                     <div class="glass-card p-4 fade-in-up-delay-4">
-                        <h3 class="text-xl font-bold text-gray-300 mb-4">Cuenta DNI</h3>
+                        <h3 class="text-md sm:text-lg font-bold text-gray-300 mb-4">Cuenta DNI</h3>
                         <ul class="space-y-3">
                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.7s;">✘</span> Cobranza Recurrente</li>
                             <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.8s;">✘</span> Conciliación Automática</li>
@@ -862,66 +917,66 @@
                         </ul>
                     </div>
                 </div>
-                <p class="mt-12 text-xl italic text-gray-400 fade-in-up-delay-2">“No buscamos reemplazar las billeteras existentes, convivimos con ellas. Somos la capa de gestión inteligente que potencia cualquier medio de pago.”</p>
+                <p class="mt-12 text-base md:text-xl italic text-gray-400 fade-in-up-delay-2">“No buscamos reemplazar las billeteras existentes, convivimos con ellas. Somos la capa de gestión inteligente que potencia cualquier medio de pago.”</p>
             </div>
         </div>
         
-        <!-- Slide 10: Equipo (antes slide 12) -->
+        <!-- Slide 10: Equipo -->
         <div id="slide-10" class="slide">
             <div class="bg-grid"></div>
             <div class="slide-content">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Equipo: La combinación ideal <span class="gradient-text">para el desafío.</span></h2>
-                <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Contamos con la experiencia necesaria para liderar el proyecto, un equipo que entiende el mercado desde adentro y que está preparado para enfrentar el entorno regulatorio.</p>
-                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 fade-in-up">Equipo: La combinación ideal <span class="gradient-text">para el desafío.</span></h2>
+                <p class="text-base md:text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Contamos con la experiencia necesaria para liderar el proyecto, un equipo que entiende el mercado desde adentro y que está preparado para enfrentar el entorno regulatorio.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                     <div class="glass-card fade-in-up-delay-2 p-6">
-                        <div class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-400 flex items-center justify-center bg-gray-900/50">
+                        <div class="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 border-2 border-cyan-400 flex items-center justify-center bg-gray-900/50">
                             <span class="text-5xl font-black text-white rotating-letter" style="animation-delay: 0s;">F</span>
                         </div>
-                        <h3 class="text-xl font-bold">Fundadores</h3>
-                        <p class="text-gray-400 mt-2 text-sm">Experiencia combinada en desarrollo de tecnología, software administrativo y gestión de PyMEs.</p>
+                        <h3 class="text-lg md:text-xl font-bold">Fundadores</h3>
+                        <p class="text-sm text-gray-400 mt-2">Experiencia combinada en desarrollo de tecnología, software administrativo y gestión de PyMEs.</p>
                     </div>
                     <div class="glass-card fade-in-up-delay-3 p-6">
-                         <div class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-purple-400 flex items-center justify-center bg-gray-900/50">
+                         <div class="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 border-2 border-purple-400 flex items-center justify-center bg-gray-900/50">
                             <span class="text-5xl font-black text-white rotating-letter" style="animation-delay: 0.4s;">S</span>
                         </div>
-                        <h3 class="text-xl font-bold">Socio estratégico</h3>
-                        <p class="text-gray-400 mt-2 text-sm">Aporta capital y red de contactos, incluyendo asesores con experiencia en el sector bancario, regulación y compliance para acelerar nuestro crecimiento.</p>
+                        <h3 class="text-lg md:text-xl font-bold">Socio estratégico</h3>
+                        <p class="text-sm text-gray-400 mt-2">Aporta capital y red de contactos, incluyendo asesores con experiencia en el sector bancario, regulación y compliance para acelerar nuestro crecimiento.</p>
                     </div>
                 </div>
-                <p class="mt-10 text-xl italic text-gray-400 fade-in-up-delay-5">"Nuestro equipo no solo entiende las necesidades del cliente, sino que también domina el complejo entorno regulatorio."</p>
+                <p class="mt-10 text-base md:text-xl italic text-gray-400 fade-in-up-delay-5">"Nuestro equipo no solo entiende las necesidades del cliente, sino que también domina el complejo entorno regulatorio."</p>
             </div>
         </div>
         
-        <!-- Slide 11: Proyección Financiera (antes slide 13) -->
+        <!-- Slide 11: Proyección Financiera -->
         <div id="slide-11" class="slide">
             <div class="bg-grid"></div>
             <div class="slide-content">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 fade-in-up">Proyección financiera: <span class="gradient-text">crecimiento exponencial.</span></h2>
-                <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Nuestras proyecciones se basan en un modelo de escalabilidad que nos permitirá alcanzar un crecimiento acelerado y sostenible.</p>
-                <div class="glass-card p-8 grid md:grid-cols-2 gap-8 items-center fade-in-up-delay-2">
-                    <div class="space-y-8 text-left">
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 fade-in-up">Proyección financiera: <span class="gradient-text">crecimiento exponencial.</span></h2>
+                <p class="text-base md:text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Nuestras proyecciones se basan en un modelo de escalabilidad que nos permitirá alcanzar un crecimiento acelerado y sostenible.</p>
+                <div class="glass-card p-4 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center fade-in-up-delay-2">
+                    <div class="space-y-6 md:space-y-8 text-left">
                         <div>
-                            <h3 class="text-2xl font-bold">Año 1</h3>
-                            <p class="text-gray-300 mt-1">Proyectamos captar a <span class="gradient-text font-bold">500 PyMEs</span>, procesando más de <span class="gradient-text font-bold">100 mil transacciones</span>.</p>
+                            <h3 class="text-xl md:text-2xl font-bold">Año 1</h3>
+                            <p class="text-sm md:text-base text-gray-300 mt-1">Proyectamos captar a <span class="gradient-text font-bold">200 PyMEs</span>, procesando más de <span class="gradient-text font-bold">1.200.000 transacciones</span>.</p>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">Año 2</h3>
-                            <p class="text-gray-300 mt-1">Buscamos un crecimiento de 4X, alcanzando las <span class="gradient-text font-bold">2.000 PyMEs</span> y superando el <span class="gradient-text font-bold">millón de transacciones</span>.</p>
+                            <h3 class="text-xl md:text-2xl font-bold">Año 2</h3>
+                            <p class="text-sm md:text-base text-gray-300 mt-1">Buscamos un crecimiento a <span class="gradient-text font-bold">1.200 PyMEs</span> y superando las <span class="gradient-text font-bold">7.200.000 transacciones</span>.</p>
                         </div>
                     </div>
                     <div class="chart-container">
                         <div class="y-axis">
-                           <span>2000</span><span>1500</span><span>1000</span><span>500</span><span>0</span>
+                           <span>1200</span><span>900</span><span>600</span><span>300</span><span>0</span>
                         </div>
                          <div class="x-axis">
                            <span>Año 1</span><span>Año 2</span>
                         </div>
                         <div class="chart-bars">
-                            <div class="bar animate-grow bg-cyan-400" style="height: 25%; animation-delay: 0.2s;">
-                                <div class="label">500</div>
+                            <div class="bar animate-grow bg-cyan-400" style="height: 16.67%; animation-delay: 0.2s;">
+                                <div class="label">200</div>
                             </div>
                             <div class="bar animate-grow bg-green-400" style="height: 100%; animation-delay: 0.4s;">
-                                <div class="label">2000</div>
+                                <div class="label">1200</div>
                             </div>
                         </div>
                     </div>
@@ -929,33 +984,33 @@
             </div>
         </div>
     
-        <!-- Slide 12: Inversión (antes slide 14) -->
+        <!-- Slide 12: Inversión -->
         <div id="slide-12" class="slide">
             <div class="bg-grid"></div>
             <div class="slide-content">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Inversión: <span class="gradient-text">la oportunidad para escalar</span></h2>
-                <p class="text-xl text-gray-300 mb-8 fade-in-up-delay-1">Buscamos una inversión semilla de <strong class="text-white text-2xl">$720.000.000</strong> para acelerar nuestro crecimiento y consolidar nuestra posición en el mercado.</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 fade-in-up">Inversión: <span class="gradient-text">la oportunidad para escalar</span></h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-8 fade-in-up-delay-1">Buscamos una inversión semilla de <strong class="text-white text-2xl">$720.000.000</strong> para acelerar nuestro crecimiento y consolidar nuestra posición en el mercado.</p>
                 
-                <div class="grid md:grid-cols-2 gap-10 text-left items-start">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left items-start">
                     <div class="fade-in-up-delay-2">
-                        <h3 class="text-2xl font-bold mb-4">Destino de los fondos:</h3>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">Destino de los fondos:</h3>
                         <div class="space-y-4">
                             <div class="glass-card p-4">
-                                <div class="flex justify-between items-center mb-1">
+                                <div class="flex justify-between items-center mb-1 text-sm md:text-base">
                                     <span>Desarrollo tecnológico</span>
                                     <span class="font-bold gradient-text">60%</span>
                                 </div>
                                 <div class="w-full bg-gray-700 rounded-full h-2"><div class="bg-cyan-400 h-2 rounded-full" style="width: 60%"></div></div>
                             </div>
                             <div class="glass-card p-4">
-                                <div class="flex justify-between items-center mb-1">
+                                <div class="flex justify-between items-center mb-1 text-sm md:text-base">
                                     <span>Cumplimiento regulatorio</span>
                                     <span class="font-bold gradient-text">20%</span>
                                 </div>
                                 <div class="w-full bg-gray-700 rounded-full h-2"><div class="bg-green-400 h-2 rounded-full" style="width: 20%"></div></div>
                             </div>
                             <div class="glass-card p-4">
-                                <div class="flex justify-between items-center mb-1">
+                                <div class="flex justify-between items-center mb-1 text-sm md:text-base">
                                     <span>Go-to-Market</span>
                                     <span class="font-bold gradient-text">20%</span>
                                 </div>
@@ -965,14 +1020,14 @@
                     </div>
                     
                     <div class="fade-in-up-delay-3">
-                        <h3 class="text-2xl font-bold mb-4">Proyecciones financieras:</h3>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">Proyecciones financieras:</h3>
                         <div class="glass-card p-6">
-                            <p class="text-gray-300">Proyectamos alcanzar el <strong class="text-white">punto de equilibrio en 3 años</strong>, basándonos en nuestras proyecciones de crecimiento.</p>
+                            <p class="text-sm md:text-base text-gray-300">Proyectamos alcanzar el <strong class="text-white">punto de equilibrio en 3 años</strong>, basándonos en nuestras proyecciones de crecimiento.</p>
                         </div>
                     </div>
                 </div>
-                <p class="mt-8 text-xl font-bold fade-in-up-delay-4">La oportunidad está lista. El mercado está preparado. El momento es ahora.</p>
-                <button class="mt-6 px-12 py-4 bg-gradient-to-r from-cyan-500 to-green-500 text-white font-bold rounded-full text-xl transform hover:scale-105 transition-transform duration-300 fade-in-up-delay-5 pulse-button">
+                <p class="mt-8 text-lg md:text-xl font-bold fade-in-up-delay-4">La oportunidad está lista. El mercado está preparado. El momento es ahora.</p>
+                <button class="mt-6 px-8 py-3 md:px-12 md:py-4 bg-gradient-to-r from-cyan-500 to-green-500 text-white font-bold rounded-full text-lg md:text-xl transform hover:scale-105 transition-transform duration-300 fade-in-up-delay-5 pulse-button">
                     Sumate a revgo
                 </button>
             </div>
@@ -1004,7 +1059,6 @@
                 });
                 updateProgressBar();
                 
-                // Actualizado para apuntar a la nueva slide fusionada con los contadores
                 const slideWithCounters = document.getElementById('slide-2');
                 if (slides[index] === slideWithCounters && !slideWithCounters.classList.contains('animated')) {
                     animateCounters(slideWithCounters);
@@ -1133,5 +1187,4 @@
     </script>
 </body>
 </html>
-
 
