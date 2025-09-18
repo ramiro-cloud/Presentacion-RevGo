@@ -338,8 +338,6 @@
             100% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
         }
         
-        /* --- NUEVOS ESTILOS --- */
-
         .bg-tech-flow {
             position: absolute;
             top: 0;
@@ -369,11 +367,12 @@
             100% { transform: rotate(360deg) translateX(10%); }
         }
 
-
         #ecosystem-carousel {
             perspective: 1200px;
             transform-style: preserve-3d;
-            height: 220px;
+            height: 180px; /* Reduced height */
+            max-width: 380px; /* Constrain width */
+            margin: auto;
         }
         .carousel-slide {
             position: absolute;
@@ -394,8 +393,11 @@
             z-index: 3;
             pointer-events: auto;
         }
+        .carousel-slide .glass-card {
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
         .carousel-slide.active .glass-card {
-            background: #141928;
+            background: #141928; /* Solid, opaque background */
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
         }
@@ -541,7 +543,7 @@
             </div>
         </div>
 
-        <!-- Slide 2: El Problema y El Mercado (FUSIONADO) -->
+        <!-- Slide 2: El Problema y El Mercado (FUSIONADO Y MODIFICADO) -->
         <div id="slide-2" class="slide">
             <div class="falling-arrows-background">
                 <span style="left: 10%; animation-delay: 0s; animation-duration: 4s; border-color: #38bdf8;"></span>
@@ -551,50 +553,50 @@
                 <span style="left: 90%; animation-delay: 0.8s; animation-duration: 5s; border-color: #34d399;"></span>
             </div>
             <div class="slide-content">
-                <div class="grid lg:grid-cols-2 gap-12 items-start">
-                    <!-- Columna Izquierda: El Problema (Contenido de la slide 2 original) -->
+                <div class="grid lg:grid-cols-2 gap-x-12 lg:items-end">
+                    <!-- Columna Izquierda: El Problema -->
                     <div class="text-center">
                         <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Las empresas <span class="gradient-text">pierden tiempo y dinero.</span></h2>
-                        <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-xl mx-auto">En Argentina, la gestión de cobranzas, cuentas corrientes y registros contables conlleva una <strong class="text-white">carga administrativa significativa</strong>...[resumen del párrafo original]</p>
+                        <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-xl mx-auto">En Argentina, la gestión de cobranzas, cuentas corrientes y registros contables conlleva una <strong class="text-white">carga administrativa significativa</strong>. Muchas organizaciones pierden tiempo y recursos en <strong class="text-white">procesos manuales</strong>, lo que genera costos, afecta la liquidez y limita el crecimiento.</p>
                         <div class="grid grid-cols-1 gap-6 text-left max-w-md mx-auto">
                             <div class="glass-card fade-in-up-delay-2">
                                 <div class="flex items-center mb-2">
                                     <svg class="w-10 h-10 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17,20h5V9h-5V20z M15,20H3V3h12V20z M3,8h12"></path></svg>
-                                    <h3 class="text-2xl font-bold ml-4">4 de cada 10</h3>
+                                    <h3 class="text-2xl font-bold ml-4">6 de cada 10</h3>
                                 </div>
-                                <p class="text-gray-300">clientes no paga a tiempo, causando mora en cuotas y suscripciones</p>
+                                <p class="text-gray-300">empresas tienen problemas para gestionar sus finanzas, registrando deudas y teniendo que notificar personas por impagos.</p>
                             </div>
                             <div class="glass-card fade-in-up-delay-3">
                                 <div class="flex items-center mb-2">
                                 <svg class="w-10 h-10 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V7a2 2 0 012-2h5l4 4v7a2 2 0 01-2 2z"></path></svg>
-                                    <h3 class="text-2xl font-bold ml-4">Horas</h3>
+                                    <h3 class="text-2xl font-bold ml-4">Muchas horas</h3>
                                 </div>
                                 <p class="text-gray-300">Consumidas en procesos manuales de conciliación.</p>
                             </div>
                              <div class="glass-card fade-in-up-delay-4">
                                 <div class="flex items-center mb-2">
                                     <svg class="w-10 h-10 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                                    <h3 class="text-2xl font-bold ml-4">Ineficaz</h3>
+                                    <h3 class="text-2xl font-bold ml-4">Gestión ineficiente</h3>
                                 </div>
-                                <p class="text-gray-300">Las billeteras masivas no resuelven la gestión administrativa.</p>
+                                <p class="text-gray-300">Las billeteras digitales no resuelven la gestión financiera.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Columna Derecha: El Mercado (Contenido de la slide 4 original) -->
-                    <div class="text-center">
+                    <!-- Columna Derecha: El Mercado -->
+                    <div class="text-center mt-12 lg:mt-0">
                         <h2 class="text-4xl md:text-5xl font-bold mb-12 fade-in-up-delay-5">El mercado está <span class="gradient-text">listo.</span></h2>
                         <div class="grid grid-cols-1 gap-8 text-center max-w-sm mx-auto">
-                            <div class="glass-card fade-in-up-delay-6 p-6 flex flex-col justify-center">
+                             <div class="glass-card fade-in-up-delay-6 p-6 flex flex-col justify-center min-h-[160px]">
                                 <h3 class="text-4xl font-bold gradient-text"><span class="counter-value" data-target="41">0</span>M</h3>
                                 <p class="mt-2 text-gray-300 text-sm">de transferencias mensuales en Argentina.</p>
                             </div>
-                            <div class="glass-card fade-in-up-delay-7 p-6 flex flex-col justify-center">
+                            <div class="glass-card fade-in-up-delay-7 p-6 flex flex-col justify-center min-h-[160px]">
                                 <h3 class="text-4xl font-bold gradient-text">USD <span class="counter-value" data-target="26.7">0</span>B</h3>
                                 <p class="mt-2 text-gray-300 text-sm">fue el valor del mercado e-commerce en 2023 (+87% interanual).</p>
                             </div>
-                            <div class="glass-card fade-in-up-delay-8 p-6 flex flex-col justify-center">
-                                <h3 class="text-4xl font-bold gradient-text"><span class="counter-value" data-target="56">0</span>% CBU</h3>
-                                <p class="mt-2 text-gray-300 text-sm">vs 44% CVU es la proyección de pagos con QR para 2025.</p>
+                            <div class="glass-card fade-in-up-delay-8 p-6 flex flex-col justify-center min-h-[160px]">
+                                <h3 class="text-2xl font-bold mb-2 gradient-text">Pagos digitales</h3>
+                                <p class="text-gray-300 text-md">En 2025, se proyecta que el 56% de los pagos con código QR se harán a través de una CBU (Clave Bancaria Uniforme) y el 44% con una CVU (Clave Virtual Uniforme).</p>
                             </div>
                         </div>
                     </div>
@@ -610,12 +612,12 @@
                 <p class="text-xl text-gray-300 mb-12 fade-in-up-delay-1">RevGo es una billetera digital integral que automatiza tus procesos financieros.</p>
                 <div class="grid md:grid-cols-3 gap-8 text-left">
                     <div class="glass-card holographic-card fade-in-up-delay-2">
-                        <h3 class="font-bold text-xl mb-2 gradient-text">Agiliza las cobranzas</h3>
-                        <p class="text-gray-300">Automatiza los cobros recurrentes y por transferencia para asegurar la puntualidad de los pagos y reducir el esfuerzo manual.</p>
+                        <h3 class="font-bold text-xl mb-2 gradient-text">Optimiza el flujo de caja</h3>
+                        <p class="text-gray-300">Al simplificar la gestión administrativa, RevGo mejora la liquidez de tu empresa, permitiendo que crezcas de forma escalable y sin límite.</p>
                     </div>
                     <div class="glass-card holographic-card fade-in-up-delay-3">
-                        <h3 class="font-bold text-xl mb-2 gradient-text">Optimiza el flujo de caja</h3>
-                        <p class="text-gray-300">Al simplificar la gestión administrativa, RevGo mejora la liquidez de tu empresa, permitiendo que reinviertas y crezcas.</p>
+                        <h3 class="font-bold text-xl mb-2 gradient-text">Agiliza las cobranzas</h3>
+                        <p class="text-gray-300">Automatiza los cobros recurrentes y por transferencia para asegurar la puntualidad de los pagos y reducir el esfuerzo manual.</p>
                     </div>
                     <div class="glass-card holographic-card fade-in-up-delay-4">
                         <h3 class="font-bold text-xl mb-2 gradient-text">Simplifica la gestión</h3>
@@ -636,7 +638,7 @@
                         <img src="./image 104.png" alt="Dashboard de RevGo" class="rounded-lg shadow-2xl">
                     </div>
                     <div class="text-left space-y-4">
-                        <p class="text-gray-300 text-lg fade-in-up-delay-2">RevGo es una herramienta poderosa que integra una <strong class="text-white">billetera digital y un ERP financiero en una sola plataforma,</strong> simplificando la gestión de tu negocio. <br><br> Somos <span class="gradient-text font-semibold">los primeros en ofrecer esta combinación,</span> automatizando tareas clave y brindándote una visión clara de tus finanzas.</p>
+                        <p class="text-gray-300 text-lg fade-in-up-delay-2">RevGo es una poderosa billetera digital que se integra a sistemas de gestión, simplificando la gestión financiera de tu empresa.</p>
                         <div class="grid grid-cols-2 gap-4 pt-2 fade-in-up-delay-3">
                             <div class="glass-card p-4 text-center">
                                 <h4 class="font-bold gradient-text text-lg">"Rev"</h4>
@@ -673,7 +675,7 @@
                                 <svg class="w-12 h-12 gradient-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h-1m-1 6v-1M4 12H3m1-6h1M7.757 4.243l.707.707m10.586 10.586l.707.707M4.243 16.243l.707-.707m10.586-10.586l.707-.707M12 20a8 8 0 100-16 8 8 0 000 16z"></path></svg>
                             </div>
                             <h3 class="font-bold text-xl mb-2">1. PAGO</h3>
-                            <p class="text-gray-400">Cliente paga con QR (transferencia o tarjeta).</p>
+                            <p class="text-gray-400">El cliente paga con cualquier medio de pago.</p>
                         </div>
                         <div class="text-center fade-in-up-delay-2">
                             <div class="w-24 h-24 mx-auto glass-card holographic-icon-card flex items-center justify-center rounded-full mb-4">
@@ -701,12 +703,12 @@
             </div>
         </div>
         
-        <!-- Slide 6: Modelo de Negocio y Ecosistema (FUSIONADO) -->
+        <!-- Slide 6: Modelo de Negocio y Ecosistema (FUSIONADO Y MODIFICADO) -->
         <div id="slide-6" class="slide">
             <div class="radial-glow-background"></div>
             <div class="slide-content">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <!-- Columna Izquierda: Modelo de Negocio (Contenido de slide 7 original) -->
+                    <!-- Columna Izquierda: Modelo de Negocio -->
                     <div class="text-center">
                         <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Modelo de Negocio</h2>
                          <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-lg mx-auto">Un modelo diseñado para maximizar ingresos a partir de tres pilares, asegurando un crecimiento escalable.</p>
@@ -728,19 +730,19 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Columna Derecha: Ecosistema (Contenido de slide 8 original) -->
+                    <!-- Columna Derecha: Ecosistema -->
                      <div class="text-center">
                          <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up-delay-4">Ecosistema Financiero</h2>
                          <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-5 max-w-lg mx-auto">Transformamos los datos de transacciones en oportunidades de negocio para que las empresas crezcan.</p>
-                         <div class="relative w-full max-w-md mx-auto fade-in-up-delay-6">
+                         <div class="relative w-full max-w-sm mx-auto fade-in-up-delay-6">
                              <div id="ecosystem-carousel" class="relative w-full">
-                                 <div class="carousel-slide"><div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Créditos a medida</h3><p class="text-gray-300">Préstamos ágiles y flexibles basados en el flujo de caja.</p></div></div>
-                                 <div class="carousel-slide"><div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Leasing de activos</h3><p class="text-gray-300">Financiamiento para que las empresas adquieran vehículos y equipos esenciales.</p></div></div>
-                                 <div class="carousel-slide"><div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Adelanto de cobranzas</h3><p class="text-gray-300">Ofrecemos liquidez inmediata al convertir cheques y facturas en efectivo.</p></div></div>
-                                 <div class="carousel-slide"><div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Fondos de inversión</h3><p class="text-gray-300">Opciones simples y seguras para rentabilizar el dinero inactivo de las empresas.</p></div></div>
-                                 <div class="carousel-slide"><div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Emisión de tarjetas</h3><p class="text-gray-300">Tarjetas de débito o crédito para gestionar gastos corporativos y personales.</p></div></div>
-                                 <div class="carousel-slide"><div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Seguros y garantías</h3><p class="text-gray-300">Protección a medida para los activos y las operaciones del negocio.</p></div></div>
-                                 <div class="carousel-slide"><div class="glass-card interactive-3d-card p-6 text-left text-sm w-full max-w-md h-full flex flex-col justify-center"><h3 class="font-bold text-lg text-cyan-300 mb-1">Pagos a proveedores</h3><p class="text-gray-300">Soluciones para automatizar y optimizar los pagos a terceros.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Créditos a medida</h3><p class="text-gray-300 text-xs">Préstamos ágiles y flexibles basados en el flujo de caja.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Leasing de activos</h3><p class="text-gray-300 text-xs">Financiamiento para que las empresas adquieran vehículos y equipos esenciales.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Adelanto de cobranzas</h3><p class="text-gray-300 text-xs">Ofrecemos liquidez inmediata al convertir cheques y facturas en efectivo.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Fondos de inversión</h3><p class="text-gray-300 text-xs">Opciones simples y seguras para rentabilizar el dinero inactivo de las empresas.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Emisión de tarjetas</h3><p class="text-gray-300 text-xs">Tarjetas de débito o crédito para gestionar gastos corporativos y personales.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Seguros y garantías</h3><p class="text-gray-300 text-xs">Protección a medida para los activos y las operaciones del negocio.</p></div></div>
+                                <div class="carousel-slide"><div class="glass-card interactive-3d-card p-4 text-left text-sm w-full h-full flex flex-col justify-center"><h3 class="font-bold text-md text-cyan-300 mb-1">Pagos a proveedores</h3><p class="text-gray-300 text-xs">Soluciones para automatizar y optimizar los pagos a terceros.</p></div></div>
                              </div>
                              <button id="eco-prev" class="carousel-nav-btn"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                              <button id="eco-next" class="carousel-nav-btn"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
@@ -756,7 +758,7 @@
             <div class="slide-content">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Validación temprana y <span class="gradient-text">alto potencial.</span></h2>
                 <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Hemos validado nuestro modelo de negocio y logrado hitos clave que demuestran la demanda de nuestro producto en el mercado.</p>
-                <div class="grid md:grid-cols-2 gap-6 text-left">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                     <div class="glass-card p-6 fade-in-up-delay-2">
                         <h3 class="font-bold text-lg mb-2 gradient-text">Validación con Erev</h3>
                         <p class="text-gray-300 text-sm">Análisis de necesidades clave del mercado a partir de nuestro trabajo con eRev.</p>
@@ -769,11 +771,7 @@
                         <h3 class="font-bold text-lg mb-2 gradient-text">Acuerdo Estratégico</h3>
                         <p class="text-gray-300 text-sm">Conversaciones con BIND para utilizar sus servicios financieros y simplificar el lanzamiento.</p>
                     </div>
-                    <div class="glass-card p-6 fade-in-up-delay-5">
-                        <h3 class="font-bold text-lg mb-2 gradient-text">Producto en Desarrollo</h3>
-                        <p class="text-gray-300 text-sm">Nuestro MVP con funcionalidades core está en su etapa final, listo para salir al mercado.</p>
-                    </div>
-                    <div class="md:col-span-2 glass-card p-6 fade-in-up-delay-6">
+                    <div class="md:col-span-2 lg:col-span-3 glass-card p-6 fade-in-up-delay-5">
                         <h3 class="font-bold text-lg mb-2 gradient-text">Búsqueda de Socio Financiero</h3>
                         <p class="text-gray-300 text-sm">Buscamos un socio estratégico que nos ayude a potenciar nuestra oferta y acelerar el crecimiento.</p>
                     </div>
@@ -788,46 +786,31 @@
             <div class="slide-content">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Roadmap a <span class="gradient-text">24 meses.</span></h2>
                 <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Un plan de crecimiento claro, regulado y medible, enfocado en la construcción de nuestro ecosistema financiero.</p>
-                <div class="max-w-4xl mx-auto relative">
-                    <div class="absolute left-0 top-10 w-0.5 h-full bg-gray-700"></div>
-                    <!-- Fase 1 -->
-                    <div class="mb-12">
-                        <h3 class="text-2xl font-bold gradient-text mb-4 fade-in-up-delay-2 text-left">Fase 1: Validación y Lanzamiento (Meses 1-6)</h3>
-                        <div class="relative pl-8">
-                            <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#0a0e1a]"></div>
-                            <p class="text-left fade-in-up-delay-3"><strong>T1:</strong> Registro PSPCP (vía BIND) y lanzamiento del MVP de cobranzas.</p>
-                        </div>
-                        <div class="relative pl-8 mt-4">
-                            <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#0a0e1a]"></div>
-                            <p class="text-left fade-in-up-delay-4"><strong>T2:</strong> Habilitación de transferencias pull programada y recurrente.</p>
-                        </div>
-                    </div>
-                    <!-- Fase 2 -->
-                    <div class="mb-12">
-                        <h3 class="text-2xl font-bold gradient-text mb-4 fade-in-up-delay-5 text-left">Fase 2: Expansión y Ecosistema (Meses 7-12)</h3>
-                        <div class="relative pl-8">
-                            <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-green-400 border-4 border-[#0a0e1a]"></div>
-                            <p class="text-left fade-in-up-delay-6"><strong>T3:</strong> Integración de QR interoperable y emisión de tarjetas.</p>
-                        </div>
-                        <div class="relative pl-8 mt-4">
-                            <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-green-400 border-4 border-[#0a0e1a]"></div>
-                            <p class="text-left fade-in-up-delay-7"><strong>T4:</strong> Lanzamiento del piloto con Organizaciones seleccionadas.</p>
+                <div class="max-w-4xl mx-auto relative text-left">
+                    <div class="absolute left-4 top-0 w-0.5 h-full bg-gray-700"></div>
+                    <!-- Primeros 12 meses -->
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold gradient-text mb-4 fade-in-up-delay-2 pl-12 relative">
+                            <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#0a0e1a]"></div>
+                            Primeros 12 Meses
+                        </h3>
+                        <div class="relative pl-12">
+                            <p class="mb-2 fade-in-up-delay-3"><strong>Fase 1 (Meses 1-6):</strong> Registro PSPCP (vía BIND), lanzamiento del MVP de cobranzas y habilitación de transferencias pull programadas.</p>
+                            <p class="fade-in-up-delay-4"><strong>Fase 2 (Meses 7-12):</strong> Integración de QR interoperable, emisión de tarjetas y lanzamiento del piloto con Organizaciones seleccionadas.</p>
                         </div>
                     </div>
-                    <!-- Fase 3 -->
-                    <div>
-                        <h3 class="text-2xl font-bold gradient-text mb-4 fade-in-up-delay-8 text-left">Fase 3: Crecimiento y Escalabilidad (Meses 13-24)</h3>
-                        <div class="relative pl-8">
-                            <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-purple-400 border-4 border-[#0a0e1a]"></div>
-                            <p class="text-left fade-in-up-delay-9"><strong>T1 2026:</strong> Integración con eREV y apertura de nuestra API para terceros.</p>
-                        </div>
-                        <div class="relative pl-8 mt-4">
-                            <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-purple-400 border-4 border-[#0a0e1a]"></div>
-                            <p class="text-left fade-in-up-delay-10"><strong>T2-T4 2026:</strong> Expansión de servicios financieros (adelantos y microcréditos).</p>
+                     <!-- Siguientes 12 meses -->
+                    <div class="mt-8">
+                        <h3 class="text-2xl font-bold gradient-text mb-4 fade-in-up-delay-5 pl-12 relative">
+                            <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-purple-400 border-4 border-[#0a0e1a]"></div>
+                            Siguientes 12 Meses
+                        </h3>
+                        <div class="relative pl-12">
+                           <p class="fade-in-up-delay-6"><strong>Fase 3 (Meses 13-24):</strong> Integración con eREV, apertura de API para terceros y expansión de servicios financieros (adelantos y microcréditos).</p>
                         </div>
                     </div>
                 </div>
-                <p class="mt-10 text-xl italic text-gray-400 fade-in-up-delay-11">"Un roadmap concreto, regulado y medible para un crecimiento sostenible."</p>
+                <p class="mt-10 text-xl italic text-gray-400 fade-in-up-delay-7 text-center">"Un roadmap concreto, regulado y medible para un crecimiento sostenible."</p>
             </div>
         </div>
         
@@ -844,7 +827,7 @@
                             <li class="flex items-center"><span class="check-anim text-green-400 mr-2" style="animation-delay: 0.4s;">✔</span> Cobranza Recurrente</li>
                             <li class="flex items-center"><span class="check-anim text-green-400 mr-2" style="animation-delay: 0.5s;">✔</span> Conciliación Automática</li>
                             <li class="flex items-center"><span class="check-anim text-green-400 mr-2" style="animation-delay: 0.6s;">✔</span> Foco PyMEs Servicios</li>
-                            <li class="flex items-center"><span class="check-anim text-green-400 mr-2" style="animation-delay: 0.7s;">✔</span> SaaS Integrado</li>
+                            <li class="flex items-center"><span class="check-anim text-green-400 mr-2" style="animation-delay: 0.7s;">✔</span> Gestión financiera integral</li>
                         </ul>
                     </div>
                     <!-- Mercado Pago -->
@@ -854,7 +837,7 @@
                             <li class="flex items-center"><span class="check-anim text-green-400 mr-2" style="animation-delay: 0.5s;">✔</span> Cobranza Recurrente</li>
                             <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.6s;">✘</span> Conciliación Automática</li>
                             <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.7s;">✘</span> Foco PyMEs Servicios</li>
-                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.8s;">✘</span> SaaS Integrado</li>
+                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.8s;">✘</span> Gestión financiera integral</li>
                         </ul>
                     </div>
                     <!-- MODO -->
@@ -864,7 +847,7 @@
                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.6s;">✘</span> Cobranza Recurrente</li>
                             <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.7s;">✘</span> Conciliación Automática</li>
                             <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.8s;">✘</span> Foco PyMEs Servicios</li>
-                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.9s;">✘</span> SaaS Integrado</li>
+                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.9s;">✘</span> Gestión financiera integral</li>
                         </ul>
                     </div>
                     <!-- Cuenta DNI -->
@@ -874,7 +857,7 @@
                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.7s;">✘</span> Cobranza Recurrente</li>
                             <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.8s;">✘</span> Conciliación Automática</li>
                             <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 0.9s;">✘</span> Foco PyMEs Servicios</li>
-                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 1.0s;">✘</span> SaaS Integrado</li>
+                            <li class="flex items-center"><span class="cross-anim text-red-400 mr-2" style="animation-delay: 1.0s;">✘</span> Gestión financiera integral</li>
                         </ul>
                     </div>
                 </div>
@@ -888,7 +871,7 @@
             <div class="slide-content">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-up">Equipo: La combinación ideal <span class="gradient-text">para el desafío.</span></h2>
                 <p class="text-lg text-gray-300 mb-10 fade-in-up-delay-1 max-w-4xl mx-auto">Contamos con la experiencia necesaria para liderar el proyecto, un equipo que entiende el mercado desde adentro y que está preparado para enfrentar el entorno regulatorio.</p>
-                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                     <div class="glass-card fade-in-up-delay-2 p-6">
                         <div class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-400 flex items-center justify-center bg-gray-900/50">
                             <span class="text-5xl font-black text-white rotating-letter" style="animation-delay: 0s;">F</span>
@@ -897,18 +880,11 @@
                         <p class="text-gray-400 mt-2 text-sm">Experiencia combinada en desarrollo de tecnología, software administrativo y gestión de PyMEs.</p>
                     </div>
                     <div class="glass-card fade-in-up-delay-3 p-6">
-                         <div class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-green-400 flex items-center justify-center bg-gray-900/50">
-                            <span class="text-5xl font-black text-white rotating-letter" style="animation-delay: 0.2s;">A</span>
-                        </div>
-                        <h3 class="text-xl font-bold">Advisory Board</h3>
-                        <p class="text-gray-400 mt-2 text-sm">Asesores de primer nivel con vasta experiencia en sector bancario, regulación y compliance.</p>
-                    </div>
-                    <div class="glass-card fade-in-up-delay-4 p-6">
                          <div class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-purple-400 flex items-center justify-center bg-gray-900/50">
                             <span class="text-5xl font-black text-white rotating-letter" style="animation-delay: 0.4s;">S</span>
                         </div>
                         <h3 class="text-xl font-bold">Socio estratégico</h3>
-                        <p class="text-gray-400 mt-2 text-sm">Socio financiero que aporta capital, conocimiento del sector y red de contactos para acelerar nuestro crecimiento.</p>
+                        <p class="text-gray-400 mt-2 text-sm">Aporta capital y red de contactos, incluyendo asesores con experiencia en el sector bancario, regulación y compliance para acelerar nuestro crecimiento.</p>
                     </div>
                 </div>
                 <p class="mt-10 text-xl italic text-gray-400 fade-in-up-delay-5">"Nuestro equipo no solo entiende las necesidades del cliente, sino que también domina el complejo entorno regulatorio."</p>
