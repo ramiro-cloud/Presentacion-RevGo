@@ -23,21 +23,21 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* MODIFICADO: Alinear al inicio en móviles para ver títulos */
+            justify-content: flex-start; 
             align-items: center;
-            padding: 4rem 1.5rem; /* MODIFICADO: Padding controlado para mejor visualización */
+            padding: 4rem 1.5rem; 
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(40px);
-            overflow-y: auto; /* Permite scroll en diapositivas largas */
-            box-sizing: border-box; /* AÑADIDO: Para asegurar que el padding no desborde */
+            overflow-y: auto; 
+            box-sizing: border-box; 
         }
         @media (min-width: 640px) {
             .slide {
-                padding: 4vw; /* Padding original para pantallas grandes */
+                padding: 4vw; 
                 overflow-y: hidden;
-                justify-content: center; /* MODIFICADO: Centrar de nuevo en pantallas grandes */
+                justify-content: center; 
             }
         }
         .slide.active {
@@ -51,8 +51,7 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            /* padding-top: 4rem; ELIMINADO: El padding del .slide ya da espacio superior */
-            padding-bottom: 4rem; /* Mantenemos espacio inferior para el scroll */
+            padding-bottom: 4rem; 
         }
         @media (min-width: 640px) {
             .slide-content {
@@ -128,10 +127,9 @@
             border-color: #38bdf8;
             transform: translateY(-50%) scale(1.1);
         }
-        .nav-button#prev { left: 1.5rem; } /* MODIFICADO AÚN MÁS: Aumentado el espacio para evitar cortes */
-        .nav-button#next { right: 1.5rem; } /* MODIFICADO AÚN MÁS: Aumentado el espacio para evitar cortes */
+        .nav-button#prev { left: 2rem; } /* MODIFICADO: Aumentado el espacio para evitar cortes */
+        .nav-button#next { right: 2rem; } /* MODIFICADO: Aumentado el espacio para evitar cortes */
         
-        /* AÑADIDO: Media query para reajustar botones en pantallas grandes */
         @media (min-width: 640px) {
             .nav-button#prev { left: 2vw; }
             .nav-button#next { right: 2vw; }
@@ -600,7 +598,7 @@
             <div class="bg-grid"></div>
             <div class="slide-content text-center">
                 <div class="mb-8 w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 mx-auto flex items-center justify-center fade-in-up">
-                        <img src="https://storage.googleapis.com/gemini-prod-us-central1-cbf2/revgo_logo.png" alt="Logo RevGo" class="max-w-full max-h-full">
+                        <img src="./Logo RevGo.png" alt="Logo RevGo" class="max-w-full max-h-full">
                 </div>
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight fade-in-up-delay-1">Agiliza tus finanzas</h1>
                 <p class="text-xl sm:text-2xl md:text-3xl mt-4 font-bold fade-in-up-delay-2"><span class="gradient-text">Automatiza tus cobranzas</span>, la nueva era digital.</p>
@@ -703,7 +701,7 @@
                 <h2 class="text-3xl md:text-5xl font-bold mb-8 fade-in-up">¿Qué es <span class="gradient-text">RevGo?</span></h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                     <div class="fade-in-up-delay-1">
-                        <img src="https://storage.googleapis.com/gemini-prod-us-central1-cbf2/revgo_dashboard.png" alt="Dashboard de RevGo" class="rounded-lg">
+                        <img src="./image 104.png" alt="Dashboard de RevGo" class="rounded-lg"> <!-- MODIFICADO: Ruta de la imagen corregida -->
                     </div>
                     <div class="text-left space-y-4">
                         <p class="text-base md:text-lg text-gray-300 fade-in-up-delay-2">RevGo es una poderosa billetera digital que se integra a sistemas de gestión, simplificando la gestión financiera de tu empresa.</p>
